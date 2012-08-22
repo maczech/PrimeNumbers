@@ -55,7 +55,36 @@ public class PrimeNumbers {
 			throw new IllegalArgumentException("Start index must be lower than end index");
 		}
 	}
+	
+	private void filterMultiplications(Integer multiplicationIndex, Integer[] elements) {
+		Integer multiplier = elements[multiplicationIndex];
+		
+		for (int i = multiplicationIndex + 1 ; i < elements.length; i *= multiplier ) {
+			
+			if(elements[i] != null && elements[i] % multiplier == 0){
+				elements[i] = null;
+			}
+		}
+		
+	}
 
+	private Double calculateStopCondition(Integer endIndex) {
+		return Math.floor(Math.sqrt(endIndex));
+	}
+	
+	private Integer[] initializeElements(Integer startIndex, Integer numberOfElements) {
+		Integer[] elements = new Integer[numberOfElements];
+		for (int i = 0; i < numberOfElements; i++) {
+			elements[i] = startIndex + i;
+		}
+		return elements;
+	}
+	
+	private Integer calculateNumberOfElements(Integer startIndex,
+			Integer endIndex) {
+		return (endIndex - startIndex) + 1;
+	}
+	
 	private Integer[] removeEmptyElements(Integer[] elements) {
 		List<Integer> elementsList = new ArrayList<Integer>();
 		
@@ -68,33 +97,7 @@ public class PrimeNumbers {
 		return elementsList.toArray(new Integer[0]);
 	}
 
-	private void filterMultiplications(Integer multiplicationIndex, Integer[] elements) {
-		Integer multiplier = elements[multiplicationIndex];
-		
-		for (int i = multiplicationIndex + 1 ; i < elements.length; i *= multiplier ) {
 
-			if(elements[i] != null && elements[i] % multiplier == 0){
-				elements[i] = null;
-			}
-		}
-		
-	}
 
-	private Double calculateStopCondition(Integer endIndex) {
-		return Math.floor(Math.sqrt(endIndex));
-	}
-
-	private Integer[] initializeElements(Integer startIndex, Integer numberOfElements) {
-		Integer[] elements = new Integer[numberOfElements];
-		for (int i = 0; i < numberOfElements; i++) {
-			elements[i] = startIndex + i;
-		}
-		return elements;
-	}
-
-	private Integer calculateNumberOfElements(Integer startIndex,
-			Integer endIndex) {
-		return (endIndex - startIndex) + 1;
-	}
 	
 }
