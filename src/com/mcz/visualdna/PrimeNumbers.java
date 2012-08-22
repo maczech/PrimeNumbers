@@ -3,6 +3,11 @@ package com.mcz.visualdna;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Prime numbers calculator based on Sieve of Eratosthenes algorithm
+ * @author maczech
+ *
+ */
 
 public class PrimeNumbers {
 
